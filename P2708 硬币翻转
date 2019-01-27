@@ -1,0 +1,28 @@
+/*翻转方法是：
+从最后一位开始，若与前一位相同则看前一位（连续的几位是不影响哒）；
+若该为位为0则将该位翻转（前面所有也需要翻转）*/
+#include<iostream>
+#include<cstring>
+using namespace std;
+int main()
+{
+	int sum=0,n;
+	char a[999];
+	cin>>a;
+	n=strlen(a);
+	
+	for(int i=n-1;i>=1;i--)
+	{
+		if(a[i]==a[i-1]) continue;
+		if(a[i]=='0'){
+			sum++;
+			for(int j=0;j<=i;j++){
+				if(a[j]=='0') a[j]='1';
+				else if(a[j]=='1') a[j]='0';
+			}
+		}
+	}
+	if(a[0]=='0') sum++;
+	cout<<sum;
+	return 0;
+}
